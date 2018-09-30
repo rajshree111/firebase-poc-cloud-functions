@@ -9,9 +9,9 @@ exports.testFunc = functions.https.onRequest((req, res) => {
   res.set('Access-Control-Allow-Origin', "*");
   res.set('Access-Control-Allow-Methods', 'GET, POST');
   if(!admin.apps.length){
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://test-auth-a.firebaseio.com"
+        admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: "https://test-auth-a.firebaseio.com"
   })
 }
 
@@ -33,7 +33,6 @@ theToken = function(uid,res){
     .then(function(customToken) {
             return res.status(200).json({ 
                   message: customToken.toString()
-      
                 });
     })
     .catch(function(error) {
