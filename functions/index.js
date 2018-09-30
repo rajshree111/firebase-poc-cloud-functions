@@ -8,11 +8,12 @@ exports.testFunc = functions.https.onRequest((req, res) => {
   cors(req, res, () => {});
   res.set('Access-Control-Allow-Origin', "*");
   res.set('Access-Control-Allow-Methods', 'GET, POST');
+  if(!admin.apps.length){
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://test-auth-a.firebaseio.com"
   })
-  
+}
 
   console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' + req.body.email);
 
